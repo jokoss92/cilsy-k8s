@@ -1,5 +1,6 @@
 # cilsy-k8s
 deploy nodejs application to k8s cluster on minikube local
+![alt text](https://github.com/rizkyramadhanch/cilsy-k8s/blob/main/control-plane.png?raw=true)
 
 # build and push nodejs image to registry
 1. go to your home directory 
