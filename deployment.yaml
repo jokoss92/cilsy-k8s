@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cilsy-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: cilsy-api
+  template:
+    metadata:
+      labels:
+        name: cilsy-api
+    spec:
+      containers:
+      - name: cilsy-api
+        image: rizkyramadhanch/cilsy-api:latest
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: cilsy-api-config
+          mountPath: /usr/src/app/config
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp /usr/src/app/config/.env /usr/src/app/.env"]
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      volumes:
+      - name: cilsy-api-config
+        configMap:
+          name: cilsy-api-config
+      # env:
+      # - name: USER_DB
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: user_db
+      #       key: password
+      # - name: PASS_DB
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: pass_db
+      #       key: password
+      # - name: DB_NAME
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: db_name
+      #       key: password
+      # - name: DB_HOST            
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: db_host
+      #       key: password
