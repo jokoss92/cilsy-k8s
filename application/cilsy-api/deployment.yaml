@@ -35,6 +35,8 @@ spec:
       - name: cilsy-api-config
         configMap:
           name: cilsy-api-config
+
+# user env if using secret k8s
       # env:
       # - name: USER_DB
       #   valueFrom:
