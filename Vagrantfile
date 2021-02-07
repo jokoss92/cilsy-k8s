@@ -21,7 +21,7 @@ Vagrant.configure("3") do |config|
   end
 
 ### worker2 instance
-  config.vm.define "worker" do |worker2|
+  config.vm.define "worker2" do |worker2|
     worker2.vm.box = "bento/ubuntu-18.04"
     worker2.vm.network "public_network", bridge: "wlo1", ip: "192.168.1.204"
     worker2.vm.provision :shell do |shell|
