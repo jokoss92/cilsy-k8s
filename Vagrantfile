@@ -1,4 +1,4 @@
-Vagrant.configure("3") do |config|
+Vagrant.configure("2") do |config|
 
 ### master instance
   config.vm.define "master" do |master|
